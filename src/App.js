@@ -1,14 +1,17 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import Contador from "./components/Calculadora";
+import "./App.css";
+import Calculadora from "./components/Calculadora";
+import Formulario from "./components/Formulario";
+import FormHook from "./components/FormHook";
+import RoomVolume from "./components/RoomVolume";
 
 function App() {
   return (
     <div className="App">
-      <section className="App-content">
-        <h1>
-          Calculadora de CO2 y filtros HEPA
-        </h1>
-        
+      <section className="background App-content">
+        {/* <FormHook /> */}
+        <RoomVolume />
       </section>
     </div>
   );
