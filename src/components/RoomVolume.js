@@ -22,7 +22,7 @@ const RoomVolume = () => {
   return (
     <Fragment>
       <h1>Formulario</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           name="ancho"
           onChange={(e) => {
@@ -107,9 +107,7 @@ const RoomVolume = () => {
           Calcular
         </button>
       </form>
-      <p>
-        {Ancho} - {Largo} - {Altura} - {CambiosAire} - {Ventilacion}
-      </p>
+      <p>CADR: {Cadr} m3/h</p>
     </Fragment>
   );
 };
