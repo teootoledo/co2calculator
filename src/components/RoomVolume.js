@@ -9,12 +9,12 @@ const RoomVolume = () => {
   const [Largo, setLargo] = useState();
   const [Volumen, setVolumen] = useState();
   const [CambiosAire, setCambiosAire] = useState();
-  const [Ventilacion, setVentilacion] = useState();
+  // const [Ventilacion, setVentilacion] = useState();
   const [Cadr, setCadr] = useState();
 
   const onSubmit = (e) => {
     setVolumen(Ancho * Largo * Altura);
-    const resultado = Volumen * (CambiosAire - Ventilacion);
+    const resultado = Volumen * (CambiosAire - 4);
     setCadr(resultado);
     console.log(Cadr);
   };
@@ -87,7 +87,7 @@ const RoomVolume = () => {
           {errors?.cambiosAire?.message}
         </span>
 
-        <select
+        {/*         <select
           name="ventilacion"
           class="form-select"
           aria-label="Default select example"
@@ -102,12 +102,12 @@ const RoomVolume = () => {
           <option value="1.5">Normal de colegio</option>
           <option value="3">Buena ventilación</option>
           <option value="4">Ventilación mejorada con sistema</option>
-        </select>
+        </select> */}
         <button type="submit" className="btn btn-primary my-3">
           Calcular
         </button>
       </form>
-      <p>CADR: {Cadr} m3/h</p>
+      <p>CADR: {Ancho * Altura * Largo * (CambiosAire - 4)}m3/h</p>
     </Fragment>
   );
 };
