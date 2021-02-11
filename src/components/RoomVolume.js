@@ -1,57 +1,115 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const RoomVolume = () => {
   const { register, errors, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [Altura, setAltura] = useState();
+  const [Ancho, setAncho] = useState();
+  const [Largo, setLargo] = useState();
+  const [Volumen, setVolumen] = useState();
+  const [CambiosAire, setCambiosAire] = useState();
+  const [Ventilacion, setVentilacion] = useState();
+  const [Cadr, setCadr] = useState();
+
+  const onSubmit = (e) => {
+    setVolumen(Ancho * Largo * Altura);
+    const resultado = Volumen * (CambiosAire - Ventilacion);
+    setCadr(resultado);
+    console.log(Cadr);
   };
+
   return (
     <Fragment>
       <h1>Formulario</h1>
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           name="ancho"
-          placeholder="Ancho"
-          type="number"
+          onChange={(e) => {
+            const opcion = e.target.value;
+            setAncho(opcion);
+          }}
           className="form-control my-2"
+          type="number"
           ref={register({
             required: { value: true, message: "Ancho obligatorio" },
-            minLength: { value: 1, message: "Mínimo un dígito" },
           })}
         />
+        <span className="text-danger text-small d-block mb-2">
+          {errors?.ancho?.message}
+        </span>
         <input
           name="largo"
-          placeholder="Largo"
-          type="number"
+          onChange={(e) => {
+            const opcion = e.target.value;
+            setLargo(opcion);
+          }}
           className="form-control my-2"
+          type="number"
           ref={register({
             required: { value: true, message: "Largo obligatorio" },
-            minLength: { value: 1, message: "Mínimo un dígito" },
           })}
         />
+        <span className="text-danger text-small d-block mb-2">
+          {errors?.largo?.message}
+        </span>
         <input
           name="alto"
-          placeholder="Alto"
-          type="number"
+          onChange={(e) => {
+            const opcion = e.target.value;
+            setAltura(opcion);
+          }}
           className="form-control my-2"
+          type="number"
           ref={register({
             required: { value: true, message: "Alto obligatorio" },
-            minLength: { value: 1, message: "Mínimo un dígito" },
           })}
         />
+        <span className="text-danger text-small d-block mb-2">
+          {errors?.alto?.message}
+        </span>
         <input
           name="cambiosAire"
-          placeholder="Cambios de aire"
-          type="number"
+          onChange={(e) => {
+            const opcion = e.target.value;
+            setCambiosAire(opcion);
+          }}
           className="form-control my-2"
+          type="number"
           ref={register({
-            required: { value: true, message: "Ancho obligatorio" },
-            minLength: { value: 1, message: "Mínimo un dígito" },
+            required: {
+              value: true,
+              message: "Cantidad de cambios de aire obligatoria",
+            },
           })}
         />
+        <span className="text-danger text-small d-block mb-2">
+          {errors?.cambiosAire?.message}
+        </span>
+
+        <select
+          name="ventilacion"
+          class="form-select"
+          aria-label="Default select example"
+          onChange={(e) => {
+            const opcion = e.target.value;
+            setVentilacion(opcion);
+          }}
+        >
+          <option selected>Ventilación del recinto</option>
+          <option value="0.5">Mala ventilación</option>
+          <option value="1">Ventilación baja</option>
+          <option value="1.5">Normal de colegio</option>
+          <option value="3">Buena ventilación</option>
+          <option value="4">Ventilación mejorada con sistema</option>
+        </select>
+        <button type="submit" className="btn btn-primary my-3">
+          Calcular
+        </button>
       </form>
+      <p>
+        {Ancho} - {Largo} - {Altura} - {CambiosAire} - {Ventilacion}
+      </p>
     </Fragment>
   );
 };
