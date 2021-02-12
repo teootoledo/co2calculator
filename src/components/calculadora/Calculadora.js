@@ -14,6 +14,9 @@ import {
   Th,
   Td,
   TableCaption,
+  Text,
+  FormLabel,
+  Heading,
 } from "@chakra-ui/react";
 
 const Calculadora = () => {
@@ -42,9 +45,25 @@ const Calculadora = () => {
   return (
     <>
       <Container>
-        <h3 className="mb-3">Calculadora de ventilación</h3>
+        <Heading
+          bgGradient="linear(to-l, #fea562, #ff7b00)"
+          bgClip="text"
+          fontFamily="SF-bold"
+          fontSize="3xl"
+          className="mb-3"
+        >
+          Calculadora de ventilación
+        </Heading>
+        <Text
+          color="gray.500"
+          fontFamily="SF-regular"
+          fontSize="lg"
+          className="mb-3"
+        >
+          Ingrese las características del recinto:
+        </Text>
         <form action="">
-          <Stack spacing={5} w={["100%"]}>
+          <Stack spacing={6} w={["100%"]}>
             <Input
               type="number"
               name="alto"
@@ -106,9 +125,9 @@ const Calculadora = () => {
             </Select>
             <Button
               onClick={() => calcular()}
-              colorScheme="green"
               isLoading={isLoading}
               loadingText="Calculando..."
+              className="neuBtn"
             >
               Calcular
             </Button>

@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "SF-light";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/SF-Pro-Display-Light.otf");
+}
+
+@font-face {
+  font-family: "SF-regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/SF-Pro-Display-Regular.otf");
+}
+
+@font-face {
+  font-family: "SF-semi-bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/SF-Pro-Display-Semibold.otf");
+}
+
+@font-face {
+  font-family: "SF-bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/SF-Pro-Display-Bold.otf");
+}
+
+@font-face {
+  font-family: "NY-regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/NewYorkExtraLarge-Regular.otf");
+}
+
+@font-face {
+  font-family: "NY-semi-bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/NewYorkExtraLarge-Semibold.otf");
+}
+
+@font-face {
+  font-family: "NY-bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/NewYorkExtraLarge-Bold.otf");
+}
