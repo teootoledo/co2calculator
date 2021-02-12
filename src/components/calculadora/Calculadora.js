@@ -15,9 +15,8 @@ import {
   Td,
   TableCaption,
 } from "@chakra-ui/react";
-import { render } from "@testing-library/react";
 
-const RoomVolume = () => {
+const Calculadora = () => {
   const [room, setRoom] = useState({
     volumen: null,
     alto: null,
@@ -34,14 +33,16 @@ const RoomVolume = () => {
   const calcular = (e) => {
     setIsLoading(true);
     const { alto, ancho, largo, ventilacion, cambioAire } = room;
-    const result = parseInt(alto * ancho * largo * (cambioAire - ventilacion));
-    setRoom({ ...room, ["cadr"]: result });
+    const volumen = parseInt(alto * ancho * largo);
+    const result = parseInt(volumen * (cambioAire - ventilacion));
+    setRoom({ ...room, ["cadr"]: result, ["volumen"]: volumen });
     setIsLoading(false);
   };
 
   return (
     <>
       <Container>
+        <h3 className="mb-3">Calculadora de ventilación</h3>
         <form action="">
           <Stack spacing={5}>
             <Input
@@ -92,9 +93,11 @@ const RoomVolume = () => {
                 setRoom({ ...room, ["ventilacion"]: inputRef.current[4].value })
               }
             >
-              <option value="0.5">0.5</option>
-              <option value="1">1</option>
-              <option value="1.5">1.5</option>
+              <option value="0.5">Mala ventilación</option>
+              <option value="1">Ventilación baja</option>
+              <option value="1.5">Normal de colegio</option>
+              <option value="3">Buena ventilación</option>
+              <option value="4">Ventilación mejorada con algún sistema</option>
             </Select>
             <Button
               onClick={() => calcular()}
@@ -104,7 +107,9 @@ const RoomVolume = () => {
             >
               Calcular
             </Button>
-            {room?.cadr && <p>Cadr: {room.cadr} m3/h</p>}
+            <div className={`${!room.cadr && "invisible"}`}>
+              <p>Cadr: {room.cadr} m3/h</p>
+            </div>
           </Stack>
         </form>
       </Container>
@@ -112,4 +117,4 @@ const RoomVolume = () => {
   );
 };
 
-export default RoomVolume;
+export default Calculadora;
