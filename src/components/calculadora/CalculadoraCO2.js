@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useRef } from "react";
-import { useForm } from "react-hook-form";
 import {
   Container,
   Button,
@@ -19,7 +18,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-const Calculadora = () => {
+const CalculadoraCO2 = () => {
   const [room, setRoom] = useState({
     volumen: null,
     alto: null,
@@ -127,7 +126,7 @@ const Calculadora = () => {
               onClick={() => calcular()}
               isLoading={isLoading}
               loadingText="Calculando..."
-              className="neuBtn"
+              className="neuBtn2 neuBackground"
             >
               Calcular
             </Button>
@@ -141,4 +140,4 @@ const Calculadora = () => {
   );
 };
 
-export default Calculadora;
+export default CalculadoraCO2;

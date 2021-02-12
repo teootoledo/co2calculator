@@ -13,11 +13,37 @@
 }
 
 .neuBtn {
-  background-color: #e6e6f0;
+  background-color: #e6e6f0 !important;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
-    -5px -5px 15px rgba(255, 255, 255, 0.9);
+    -5px -5px 15px rgba(255, 255, 255, 0.9) !important;
   border: none;
   border-radius: 20%;
+}
+
+.neuBtn2 {
+  background: #ff7b00 !important;
+  background: -moz-linear-gradient(
+    315deg,
+    rgba(255, 123, 0, 1) 0%,
+    #fea562 100%
+  ) !important;
+  background: -webkit-linear-gradient(
+    315deg,
+    rgba(255, 123, 0, 1) 0%,
+    rgba(254, 165, 98, 1) 100%
+  ) !important;
+  background: linear-gradient(
+    315deg,
+    rgba(255, 123, 0, 1) 0%,
+    rgba(254, 165, 98, 1) 100%
+  ) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7b00",endColorstr="#fea562",GradientType=1);
+  color: #e6e6f0 !important;
+}
+
+.neuBtn:focus {
+  border: none;
+  outline: none !important;
 }
 
 .neuInput {
@@ -53,4 +79,9 @@
   box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
     inset -5px -6px 15px rgba(255, 255, 255, 0.9);
   border: none;
+}
+
+/* Imágenes --------------------------------------------- */
+.isologo {
+  src: "./imgs/isologo-adox.png";
 }
