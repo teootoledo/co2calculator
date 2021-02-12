@@ -44,11 +44,12 @@ const Calculadora = () => {
       <Container>
         <h3 className="mb-3">Calculadora de ventilación</h3>
         <form action="">
-          <Stack spacing={5}>
+          <Stack spacing={5} w={["100%"]}>
             <Input
               type="number"
               name="alto"
               placeholder="Altura"
+              className="neuInput"
               onChange={() =>
                 setRoom({ ...room, ["alto"]: inputRef.current[0].value })
               }
@@ -60,6 +61,7 @@ const Calculadora = () => {
               name="ancho"
               placeholder="Ancho"
               size="md"
+              className="neuInput"
               ref={(el) => (inputRef.current[1] = el)}
               onChange={() =>
                 setRoom({ ...room, ["ancho"]: inputRef.current[1].value })
@@ -69,6 +71,7 @@ const Calculadora = () => {
               type="number"
               name="largo"
               placeholder="Largo"
+              className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
@@ -79,6 +82,7 @@ const Calculadora = () => {
               type="number"
               name="cambioAire"
               placeholder="Cambios de aire"
+              className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
@@ -88,6 +92,7 @@ const Calculadora = () => {
             <Select
               ref={(el) => (inputRef.current[4] = el)}
               placeholder="Seleciona una opcion"
+              className="neuInput"
               value={room.ventilacion}
               onChange={(el) =>
                 setRoom({ ...room, ["ventilacion"]: inputRef.current[4].value })

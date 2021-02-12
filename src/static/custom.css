@@ -1,19 +1,56 @@
+/* Componentes ------------------------------------------ */
 .card {
   border-radius: 10px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  margin: 3rem 0;
-  background: white;
+  padding: 1.5rem;
+  margin: 2rem;
+  background-color: #e6e6f0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.9);
+  border: none;
   animation: 0.5s ease-in fadeIn 1;
   align-items: center;
   min-height: 200px;
 }
 
+.neuBtn {
+  background-color: #e6e6f0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 20%;
+}
+
+.neuInput {
+  background: #e6e6f0;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+    inset -5px -6px 15px rgba(255, 255, 255, 0.9);
+  border-radius: 10px !important;
+  border: none;
+}
+.neuInput:focus {
+  background: #e6e6f0 !important;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+    inset -5px -6px 15px rgba(255, 255, 255, 0.9) !important;
+  border-radius: 10px !important;
+  border: none;
+}
+
+/* Utilidades ------------------------------------------- */
 .invisible {
   display: block;
 }
 
-/* Estilo */
+/* Colores - Gradients ---------------------------------- */
 .neuBackground {
   background-color: #e6e6f0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.9);
+  border: none;
+}
+
+.neuBackground2 {
+  background: #e6e6f0;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+    inset -5px -6px 15px rgba(255, 255, 255, 0.9);
+  border: none;
 }
