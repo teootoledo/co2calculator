@@ -22,7 +22,7 @@
 }
 
 .App-content {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,101 +36,7 @@
   color: #61dafb;
 }
 
-.neu1 {
-  background-color: #e6e6f0;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
-    -5px -5px 15px rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
 
-.neu2 {
-  background: #e6e6f0;
-  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
-    inset -5px -6px 15px rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.neu2:focus {
-  background: #e6e6f0;
-  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
-    inset -5px -6px 15px rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  outline: none;
-}
-
-.neuBtn1 {
-  background: rgb(255, 113, 146);
-  background: -moz-linear-gradient(
-    315deg,
-    rgba(255, 113, 146, 1) 0%,
-    rgba(255, 133, 133, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    315deg,
-    rgba(255, 113, 146, 1) 0%,
-    rgba(255, 133, 133, 1) 100%
-  );
-  background: linear-gradient(
-    315deg,
-    rgba(255, 113, 146, 1) 0%,
-    rgba(255, 133, 133, 1) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7192",endColorstr="#ff8585",GradientType=1);
-  color: #e6e6f0;
-}
-
-.neuBtn2 {
-  background: rgb(255, 123, 0);
-  background: -moz-linear-gradient(
-    315deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(254, 165, 98, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    315deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(254, 165, 98, 1) 100%
-  );
-  background: linear-gradient(
-    315deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(254, 165, 98, 1) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7b00",endColorstr="#fea562",GradientType=1);
-  color: #e6e6f0;
-}
-
-.neuBtn2:active {
-  background: rgb(255, 123, 0);
-  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
-    inset -5px -6px 15px rgba(255, 255, 255, 0.3);
-  border: none;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.background {
-  background: #e6e6f0;
-  border: none;
-}
 
 @keyframes App-logo-spin {
   from {
