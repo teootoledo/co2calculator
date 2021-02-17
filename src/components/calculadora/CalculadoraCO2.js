@@ -14,6 +14,7 @@ import {
   Th,
   Td,
   TableCaption,
+  HStack,
   Text,
   Tooltip,
   FormLabel,
@@ -114,36 +115,55 @@ const CalculadoraCO2 = () => {
               fontSize="lg"
               className="mt-5"
             >
-              Flujo de aire exterior y filtrado:
+              Flujo de aire exterior:
             </Text>
-            <Input
-              type="number"
-              name="flujoAireExt"
-              placeholder="Flujo de aire exterior [m³/min]"
-              className="neuInput"
-              size="md"
-              ref={(el) => (inputRef.current[2] = el)}
-              onChange={() =>
-                setAula({
-                  ...aula,
-                  ["flujoAireExt"]: inputRef.current[2].value,
-                })
-              }
-            />
-            <Input
-              type="number"
-              name="flujoAireExt"
-              placeholder="Flujo de aire filtrado [m³/min]"
-              className="neuInput"
-              size="md"
-              ref={(el) => (inputRef.current[3] = el)}
-              onChange={() =>
-                setAula({
-                  ...aula,
-                  ["flujoAireFil"]: inputRef.current[3].value,
-                })
-              }
-            />
+            <div className="neuBtn py-3">
+              <div className={`${!aula.flujoAireExt && "invisible"} `}>
+                <Tooltip
+                  label="Clean Air Delivery Rate"
+                  aria-label="litrosCO2pm"
+                >
+                  <p>{aula.flujoAireExt} [m³/min]</p>
+                </Tooltip>
+              </div>
+            </div>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Flujo de aire filtrado:
+            </Text>
+            <div className="neuBtn py-3">
+              <div className={`${!aula.flujoAireFil && "invisible"} `}>
+                <Tooltip
+                  label="Clean Air Delivery Rate"
+                  aria-label="litrosCO2pm"
+                >
+                  <p>{aula.flujoAireFil} [m³/min]</p>
+                </Tooltip>
+              </div>
+            </div>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Flujo de aire exterior:
+            </Text>
+            <div className="neuBtn py-3">
+              <div className={`${!aula.flujoAireExt && "invisible"} `}>
+                <Tooltip
+                  label="Clean Air Delivery Rate"
+                  aria-label="litrosCO2pm"
+                >
+                  <p>{aula.flujoAireExt} [m³/min]</p>
+                </Tooltip>
+              </div>
+            </div>
+
             <Text
               color="gray.500"
               fontFamily="SF-regular"

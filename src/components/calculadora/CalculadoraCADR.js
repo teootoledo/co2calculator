@@ -160,7 +160,7 @@ const CalculadoraCADR = () => {
             <div className="neuBtn py-3">
               <div className={`${!room.cadr && "invisible"} `}>
                 <Tooltip label="Clean Air Delivery Rate" aria-label="Cadr">
-                  <p>{room.cadr} CO2 l/m</p>
+                  <p>{room.cadr} Cadr [m³/h]</p>
                 </Tooltip>
               </div>
             </div>
