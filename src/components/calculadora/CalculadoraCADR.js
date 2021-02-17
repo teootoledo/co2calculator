@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   Button,
+  Badge,
   Input,
   Select,
   Stack,
@@ -14,6 +15,7 @@ import {
   Th,
   Td,
   TableCaption,
+  Tooltip,
   Text,
   FormLabel,
   Heading,
@@ -52,7 +54,15 @@ const CalculadoraCADR = () => {
           fontSize="3xl"
           className="mb-3"
         >
-          Calculadora de ventilación
+          Calculadora de filtro{" "}
+          <Badge
+            bgGradient="linear(to-l, #fea562, #ff7b00)"
+            color="#e6e6f0"
+            fontSize="1.2rem"
+            className="mb-1"
+          >
+            HEPA
+          </Badge>
         </Heading>
         <Text
           color="gray.500"
@@ -60,7 +70,7 @@ const CalculadoraCADR = () => {
           fontSize="lg"
           className="mb-3"
         >
-          Ingrese las características del recinto:
+          Ingrese las características del aula:
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
@@ -108,6 +118,14 @@ const CalculadoraCADR = () => {
                 setRoom({ ...room, ["cambioAire"]: inputRef.current[3].value })
               }
             />
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Situación de ventilación del aula:
+            </Text>
             <Select
               ref={(el) => (inputRef.current[4] = el)}
               placeholder="Seleciona una opcion"
@@ -123,6 +141,14 @@ const CalculadoraCADR = () => {
               <option value="3">Buena ventilación</option>
               <option value="4">Ventilación mejorada con algún sistema</option>
             </Select>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Cálculo del tamaño de filtro requerido:
+            </Text>
             <Button
               onClick={() => calcular()}
               isLoading={isLoading}
@@ -131,8 +157,12 @@ const CalculadoraCADR = () => {
             >
               Calcular
             </Button>
-            <div className={`${!room.cadr && "invisible"}`}>
-              <p>Cadr: {room.cadr} m3/h</p>
+            <div className="neuBtn py-3">
+              <div className={`${!room.cadr && "invisible"} `}>
+                <Tooltip label="Clean Air Delivery Rate" aria-label="Cadr">
+                  <p>{room.cadr} CO2 l/m</p>
+                </Tooltip>
+              </div>
             </div>
           </Stack>
         </form>

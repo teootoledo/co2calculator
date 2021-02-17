@@ -17,7 +17,7 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
     -5px -5px 15px rgba(255, 255, 255, 0.9) !important;
   border: none;
-  border-radius: 20%;
+  border-radius: 10px !important;
 }
 
 .neuBtn2 {

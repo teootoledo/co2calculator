@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef } from "react";
 import {
   Container,
+  Badge,
   Button,
   Input,
   Select,
@@ -14,17 +15,18 @@ import {
   Td,
   TableCaption,
   Text,
+  Tooltip,
   FormLabel,
   Heading,
 } from "@chakra-ui/react";
 
 const CalculadoraCO2 = () => {
-  const [room, setRoom] = useState({
-    volumen: null,
-    alto: null,
-    ancho: null,
-    largo: null,
-    cadr: null,
+  const [aula, setAula] = useState({
+    estudiantes: null,
+    profesores: null,
+    litrosCO2pm: null,
+    flujoAireExt: null,
+    flujoAireFil: null,
     cambioAire: null,
     ventilacion: null,
   });
@@ -34,10 +36,10 @@ const CalculadoraCO2 = () => {
 
   const calcular = (e) => {
     setIsLoading(true);
-    const { alto, ancho, largo, ventilacion, cambioAire } = room;
+    const { alto, ancho, largo, ventilacion, cambioAire } = aula;
     const volumen = parseInt(alto * ancho * largo);
     const result = parseInt(volumen * (cambioAire - ventilacion));
-    setRoom({ ...room, ["cadr"]: result, ["volumen"]: volumen });
+    setAula({ ...aula, ["cadr"]: result, ["volumen"]: volumen });
     setIsLoading(false);
   };
 
@@ -51,7 +53,15 @@ const CalculadoraCO2 = () => {
           fontSize="3xl"
           className="mb-3"
         >
-          Calculadora de ventilación
+          Calculadora de niveles{" "}
+          <Badge
+            bgGradient="linear(to-l, #fea562, #ff7b00)"
+            color="#e6e6f0"
+            fontSize="1.2rem"
+            className="mb-1"
+          >
+            CO2
+          </Badge>
         </Heading>
         <Text
           color="gray.500"
@@ -59,69 +69,117 @@ const CalculadoraCO2 = () => {
           fontSize="lg"
           className="mb-3"
         >
-          Ingrese las características del recinto:
+          Tasa de generación de CO2:
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
             <Input
               type="number"
-              name="alto"
-              placeholder="Altura"
+              name="estudiantes"
+              placeholder="Nro. de estudiantes"
               className="neuInput"
-              onChange={() =>
-                setRoom({ ...room, ["alto"]: inputRef.current[0].value })
-              }
               size="md"
               ref={(el) => (inputRef.current[0] = el)}
+              onChange={() =>
+                setAula({ ...aula, ["estudiantes"]: inputRef.current[0].value })
+              }
             />
             <Input
               type="number"
-              name="ancho"
-              placeholder="Ancho"
+              name="profesores"
+              placeholder="Nro. de profesores"
               size="md"
               className="neuInput"
               ref={(el) => (inputRef.current[1] = el)}
               onChange={() =>
-                setRoom({ ...room, ["ancho"]: inputRef.current[1].value })
+                setAula({ ...aula, ["profesores"]: inputRef.current[1].value })
               }
             />
+            <Text color="gray.500" fontFamily="SF-regular" fontSize="lg">
+              Total de litros CO2 por minuto:
+            </Text>
+            <div className="neuBtn py-3">
+              <div className={`${!aula.litrosCO2pm && "invisible"} `}>
+                <Tooltip
+                  label="Clean Air Delivery Rate"
+                  aria-label="litrosCO2pm"
+                >
+                  <p>Cadr: {aula.litrosCO2pm} m³/h</p>
+                </Tooltip>
+              </div>
+            </div>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Flujo de aire exterior y filtrado:
+            </Text>
             <Input
               type="number"
-              name="largo"
-              placeholder="Largo"
+              name="flujoAireExt"
+              placeholder="Flujo de aire exterior [m³/min]"
               className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
-                setRoom({ ...room, ["largo"]: inputRef.current[2].value })
+                setAula({
+                  ...aula,
+                  ["flujoAireExt"]: inputRef.current[2].value,
+                })
               }
             />
             <Input
               type="number"
-              name="cambioAire"
-              placeholder="Cambios de aire"
+              name="flujoAireExt"
+              placeholder="Flujo de aire filtrado [m³/min]"
               className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
-                setRoom({ ...room, ["cambioAire"]: inputRef.current[3].value })
+                setAula({
+                  ...aula,
+                  ["flujoAireFil"]: inputRef.current[3].value,
+                })
               }
             />
-            <Select
-              ref={(el) => (inputRef.current[4] = el)}
-              placeholder="Seleciona una opcion"
-              className="neuInput"
-              value={room.ventilacion}
-              onChange={(el) =>
-                setRoom({ ...room, ["ventilacion"]: inputRef.current[4].value })
-              }
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
             >
-              <option value="0.5">Mala ventilación</option>
-              <option value="1">Ventilación baja</option>
-              <option value="1.5">Normal de colegio</option>
-              <option value="3">Buena ventilación</option>
-              <option value="4">Ventilación mejorada con algún sistema</option>
-            </Select>
+              Flujo de aire limpio de virus por persona:
+            </Text>
+            <Input
+              type="number"
+              name="flujoAireExt"
+              placeholder="Flujo de aire exterior por persona [m³/min]"
+              className="neuInput"
+              size="md"
+              ref={(el) => (inputRef.current[2] = el)}
+              onChange={() =>
+                setAula({
+                  ...aula,
+                  ["flujoAireExt"]: inputRef.current[2].value,
+                })
+              }
+            />
+            <Input
+              type="number"
+              name="flujoAireExt"
+              placeholder="Flujo de aire filtrado por persona [m³/min]"
+              className="neuInput"
+              size="md"
+              ref={(el) => (inputRef.current[3] = el)}
+              onChange={() =>
+                setAula({
+                  ...aula,
+                  ["flujoAireFil"]: inputRef.current[3].value,
+                })
+              }
+            />
             <Button
               onClick={() => calcular()}
               isLoading={isLoading}
@@ -130,8 +188,8 @@ const CalculadoraCO2 = () => {
             >
               Calcular
             </Button>
-            <div className={`${!room.cadr && "invisible"}`}>
-              <p>Cadr: {room.cadr} m3/h</p>
+            <div className={`${!aula.cadr && "invisible"}`}>
+              <p>Cadr: {aula.cadr} m3/h</p>
             </div>
           </Stack>
         </form>
