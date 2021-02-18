@@ -137,7 +137,7 @@ const CalculadoraCO2 = ({ room }) => {
                 setAula({ ...aula, ["profesores"]: inputRef.current[1].value })
               }
             />
-            <Text
+            {/* <Text
               color="gray.500"
               fontFamily="SF-regular"
               fontSize="lg"
@@ -177,7 +177,7 @@ const CalculadoraCO2 = ({ room }) => {
                   </div>
                 </div>
               </Box>
-            </SimpleGrid>
+            </SimpleGrid> */}
             <Text
               color="gray.500"
               fontFamily="SF-regular"
