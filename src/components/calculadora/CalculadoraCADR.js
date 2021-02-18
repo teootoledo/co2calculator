@@ -21,26 +21,23 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-const CalculadoraCADR = () => {
-  const [room, setRoom] = useState({
-    volumen: null,
-    alto: null,
-    ancho: null,
-    largo: null,
-    cadr: null,
-    cambioAire: null,
-    ventilacion: null,
-  });
+const CalculadoraCADR = ({ room, setRoom }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const inputRef = useRef([]);
 
   const calcular = (e) => {
     setIsLoading(true);
-    const { alto, ancho, largo, ventilacion, cambioAire } = room;
-    const volumen = parseInt(alto * ancho * largo);
-    const result = parseInt(volumen * (cambioAire - ventilacion));
-    setRoom({ ...room, ["cadr"]: result, ["volumen"]: volumen });
+    const { alto, ancho, largo, ventilacion, cambiosAire } = room;
+    const volumenCalc = parseInt(alto * ancho * largo);
+    const deltaAire = cambiosAire - ventilacion;
+    const result = parseInt(volumenCalc * deltaAire);
+    setRoom({
+      ...room,
+      ["cadr"]: result,
+      ["volumen"]: volumenCalc,
+      ["cambiosFiltro"]: deltaAire,
+    });
     setIsLoading(false);
   };
 
@@ -109,13 +106,13 @@ const CalculadoraCADR = () => {
             />
             <Input
               type="number"
-              name="cambioAire"
+              name="cambiosAire"
               placeholder="Cambios de aire"
               className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
-                setRoom({ ...room, ["cambioAire"]: inputRef.current[3].value })
+                setRoom({ ...room, ["cambiosAire"]: inputRef.current[3].value })
               }
             />
             <Text

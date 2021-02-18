@@ -6,6 +6,8 @@ import {
   Input,
   Select,
   Stack,
+  Box,
+  SimpleGrid,
   Table,
   Thead,
   Tbody,
@@ -15,33 +17,72 @@ import {
   Td,
   TableCaption,
   HStack,
+  Feature,
   Text,
   Tooltip,
   FormLabel,
   Heading,
 } from "@chakra-ui/react";
 
-const CalculadoraCO2 = () => {
+const CalculadoraCO2 = ({ room }) => {
   const [aula, setAula] = useState({
     estudiantes: null,
     profesores: null,
-    litrosCO2pm: null,
-    flujoAireExt: null,
-    flujoAireFil: null,
-    cambioAire: null,
-    ventilacion: null,
+    flujoTotalPersonaLS: null,
+    flujoTotalPersonaM3H: null,
+    calibracionCO2ext: null,
+    limiteNoHEPA: null,
+    limiteSiHEPA: null,
   });
   const [isLoading, setIsLoading] = useState(false);
+
+  //------- CONSTANTES ----------//
+  const tasaExhaEst = 0.24636;
+  const tasaExhaProf = 0.36812;
+  const H28 = 1;
+  const H29 = 0.000001;
 
   const inputRef = useRef([]);
 
   const calcular = (e) => {
     setIsLoading(true);
-    const { alto, ancho, largo, ventilacion, cambioAire } = aula;
-    const volumen = parseInt(alto * ancho * largo);
-    const result = parseInt(volumen * (cambioAire - ventilacion));
-    setAula({ ...aula, ["cadr"]: result, ["volumen"]: volumen });
+    const { estudiantes, profesores, calibracionCO2ext } = aula;
+    const litrosCO2pm = parseFloat(
+      estudiantes * tasaExhaEst + profesores * tasaExhaProf
+    );
+    const flujoAireExt = parseFloat((room.volumen * room.ventilacion) / 60);
+    const flujoAireFil = parseFloat((room.volumen * room.cambiosFiltro) / 60);
+    const flujoAireExtNoHEPA_M3pM = flujoAireExt + flujoAireFil;
+    const flujoAireExtNoHEPA_LpM = flujoAireExtNoHEPA_M3pM * 1000;
+    const flujoAireExtXPersona = parseFloat(
+      (flujoAireExt * 1000) / 60 / (room.estudiantes + room.profesores)
+    );
+    const flujoAireFilXPersona = parseFloat(
+      (flujoAireFil * 1000) / 60 / (room.estudiantes + room.profesores)
+    );
+    const flujoTotalPersonaLS_Calc =
+      flujoAireExtXPersona + flujoAireFilXPersona; //SALIDA
+    const flujoTotalPersonaM3H_Calc = flujoTotalPersonaLS_Calc * 3.6; //SALIDA
+    const flujoObjetivoAireExt = flujoAireExt * 1000;
+    const limiteNoHEPA_Calc =
+      (litrosCO2pm + flujoAireExtNoHEPA_LpM * calibracionCO2ext * H28 * H29) /
+      (flujoAireExtNoHEPA_LpM * H28 * H29); //SALIDA
+    const limiteSiHEPA_Calc =
+      (litrosCO2pm + flujoObjetivoAireExt * calibracionCO2ext * H28 * H29) /
+      (flujoObjetivoAireExt * H28 * H29);
+    //SALIDA
+    console.log(flujoTotalPersonaLS_Calc);
+    console.log(flujoAireExtXPersona);
+    console.log(flujoAireFilXPersona);
+
     setIsLoading(false);
+    setAula({
+      ...aula,
+      ["limiteNoHEPA"]: limiteNoHEPA_Calc.toFixed(),
+      ["limiteSiHEPA"]: limiteSiHEPA_Calc.toFixed(),
+      ["flujoTotalPersonaLS"]: flujoTotalPersonaLS_Calc,
+      ["flujoTotalPersonaM3H"]: flujoTotalPersonaM3H_Calc,
+    });
   };
 
   return (
@@ -96,110 +137,77 @@ const CalculadoraCO2 = () => {
                 setAula({ ...aula, ["profesores"]: inputRef.current[1].value })
               }
             />
-            <Text color="gray.500" fontFamily="SF-regular" fontSize="lg">
-              Total de litros CO2 por minuto:
-            </Text>
-            <div className="neuBtn py-3">
-              <div className={`${!aula.litrosCO2pm && "invisible"} `}>
-                <Tooltip
-                  label="Clean Air Delivery Rate"
-                  aria-label="litrosCO2pm"
-                >
-                  <p>Cadr: {aula.litrosCO2pm} m³/h</p>
-                </Tooltip>
-              </div>
-            </div>
             <Text
               color="gray.500"
               fontFamily="SF-regular"
               fontSize="lg"
               className="mt-5"
             >
-              Flujo de aire exterior:
+              Flujo de aire limpio de virus (total por persona)
             </Text>
-            <div className="neuBtn py-3">
-              <div className={`${!aula.flujoAireExt && "invisible"} `}>
-                <Tooltip
-                  label="Clean Air Delivery Rate"
-                  aria-label="litrosCO2pm"
-                >
-                  <p>{aula.flujoAireExt} [m³/min]</p>
-                </Tooltip>
-              </div>
-            </div>
-            <Text
-              color="gray.500"
-              fontFamily="SF-regular"
-              fontSize="lg"
-              className="mt-5"
-            >
-              Flujo de aire filtrado:
-            </Text>
-            <div className="neuBtn py-3">
-              <div className={`${!aula.flujoAireFil && "invisible"} `}>
-                <Tooltip
-                  label="Clean Air Delivery Rate"
-                  aria-label="litrosCO2pm"
-                >
-                  <p>{aula.flujoAireFil} [m³/min]</p>
-                </Tooltip>
-              </div>
-            </div>
-            <Text
-              color="gray.500"
-              fontFamily="SF-regular"
-              fontSize="lg"
-              className="mt-5"
-            >
-              Flujo de aire exterior:
-            </Text>
-            <div className="neuBtn py-3">
-              <div className={`${!aula.flujoAireExt && "invisible"} `}>
-                <Tooltip
-                  label="Clean Air Delivery Rate"
-                  aria-label="litrosCO2pm"
-                >
-                  <p>{aula.flujoAireExt} [m³/min]</p>
-                </Tooltip>
-              </div>
-            </div>
+            <SimpleGrid columns={2} spacing={4}>
+              <Box height="80px">
+                <div className="neuBtn py-3">
+                  <p>{aula.flujoTotalPersonaLS}</p>
+                  <div
+                    className={`${!aula.flujoTotalPersonaLS && "invisible"} `}
+                  >
+                    <Tooltip
+                      label="Flujo total de aire limpio por persona"
+                      aria-label="flujoTotalPersonasLS"
+                    >
+                      <p>{aula.flujoTotalPersonaLS} [l/s]</p>
+                    </Tooltip>
+                  </div>
+                </div>
+              </Box>
+              <Box height="80px">
+                <div className="neuBtn py-3">
+                  <p>{aula.flujoTotalPersonaM3H}</p>
 
+                  <div
+                    className={`${!aula.flujoTotalPersonaM3H && "invisible"} `}
+                  >
+                    <Tooltip
+                      label="Flujo de aire exterior"
+                      aria-label="litrosCO2pm"
+                    >
+                      <p>{aula.flujoTotalPersonaM3H} [m³/h]</p>
+                    </Tooltip>
+                  </div>
+                </div>
+              </Box>
+            </SimpleGrid>
             <Text
               color="gray.500"
               fontFamily="SF-regular"
               fontSize="lg"
               className="mt-5"
             >
-              Flujo de aire limpio de virus por persona:
+              Calibración CO2 exterior:
             </Text>
             <Input
               type="number"
-              name="flujoAireExt"
-              placeholder="Flujo de aire exterior por persona [m³/min]"
+              name="calibracionCO2ext"
+              placeholder="[ppm]"
               className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
                 setAula({
                   ...aula,
-                  ["flujoAireExt"]: inputRef.current[2].value,
+                  ["calibracionCO2ext"]: inputRef.current[2].value,
                 })
               }
             />
-            <Input
-              type="number"
-              name="flujoAireExt"
-              placeholder="Flujo de aire filtrado por persona [m³/min]"
-              className="neuInput"
-              size="md"
-              ref={(el) => (inputRef.current[3] = el)}
-              onChange={() =>
-                setAula({
-                  ...aula,
-                  ["flujoAireFil"]: inputRef.current[3].value,
-                })
-              }
-            />
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5"
+            >
+              Cálculo del límite de CO2
+            </Text>
             <Button
               onClick={() => calcular()}
               isLoading={isLoading}
@@ -208,9 +216,48 @@ const CalculadoraCO2 = () => {
             >
               Calcular
             </Button>
-            <div className={`${!aula.cadr && "invisible"}`}>
-              <p>Cadr: {aula.cadr} m3/h</p>
-            </div>
+            <SimpleGrid columns={2} spacing={4} className="mb-4">
+              <Box height="80px">
+                <div className="neuBtn py-3">
+                  <Text
+                    color="gray.500"
+                    fontFamily="SF-regular"
+                    fontSize="md"
+                    className="mt-0"
+                  >
+                    Sin filtro HEPA
+                  </Text>
+                  <div className={`${!aula.limiteNoHEPA && "invisible"} `}>
+                    <Tooltip
+                      label="Flujo de aire exterior"
+                      aria-label="litrosCO2pm"
+                    >
+                      <p>{aula.limiteNoHEPA} [ppm]</p>
+                    </Tooltip>
+                  </div>
+                </div>
+              </Box>
+              <Box height="80px">
+                <div className="neuBtn py-3">
+                  <Text
+                    color="gray.500"
+                    fontFamily="SF-regular"
+                    fontSize="md"
+                    className="mt-0"
+                  >
+                    Con filtro HEPA
+                  </Text>
+                  <div className={`${!aula.limiteSiHEPA && "invisible"} `}>
+                    <Tooltip
+                      label="Flujo de aire exterior"
+                      aria-label="litrosCO2pm"
+                    >
+                      <p>{aula.limiteSiHEPA} [ppm]</p>
+                    </Tooltip>
+                  </div>
+                </div>
+              </Box>
+            </SimpleGrid>
           </Stack>
         </form>
       </Container>
