@@ -111,7 +111,7 @@ const CalculadoraCO2 = ({ room }) => {
           fontSize="lg"
           className="mb-3"
         >
-          Tasa de generación de CO2:
+          Tasa de generación de CO<sub>2</sub>:
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
@@ -184,7 +184,7 @@ const CalculadoraCO2 = ({ room }) => {
               fontSize="lg"
               className="mt-5"
             >
-              Calibración CO2 exterior:
+              Calibración CO<sub>2</sub> exterior:
             </Text>
             <Input
               type="number"
@@ -206,7 +206,7 @@ const CalculadoraCO2 = ({ room }) => {
               fontSize="lg"
               className="mt-5"
             >
-              Cálculo del límite de CO2
+              Cálculo del límite de CO<sub>2</sub>
             </Text>
             <Button
               onClick={() => calcular()}
