@@ -22,15 +22,15 @@
 }
 
 .neuBtn2 {
-  background: #cd201f !important;
-  background: -moz-linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
+  background: #df3a8e !important;
+  background: -moz-linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
   background: -webkit-linear-gradient(
     315deg,
-    #cd201f 0%,
-    #f04747 100%
+    #df3a8e 0%,
+    #f85dad 100%
   ) !important;
-  background: linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cd201f",endColorstr="#f04747",GradientType=1);
+  background: linear-gradient(315deg, #df3a8e 0%, #f85dad 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#df3a8e",endColorstr="#f85dad",GradientType=1);
   color: #e6e6f0 !important;
 }
 
