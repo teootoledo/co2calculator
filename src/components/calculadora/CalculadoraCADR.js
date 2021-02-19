@@ -45,7 +45,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
     <>
       <Container>
         <Heading
-          bgGradient="linear(to-l, #fea562, #ff7b00)"
+          bgGradient="linear(to-l, #f04747, #cd201f)"
           bgClip="text"
           fontFamily="SF-bold"
           fontSize="3xl"
@@ -53,7 +53,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
         >
           Calculadora de filtro{" "}
           <Badge
-            bgGradient="linear(to-l, #fea562, #ff7b00)"
+            bgGradient="linear(to-l, #f04747, #cd201f)"
             color="#e6e6f0"
             fontSize="1.2rem"
             className="mb-1"

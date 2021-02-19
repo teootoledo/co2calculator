@@ -2,7 +2,8 @@
 .card {
   border-radius: 10px;
   padding: 1.5rem;
-  margin: 2rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
   background-color: #e6e6f0;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
     -5px -5px 15px rgba(255, 255, 255, 0.9);
@@ -21,23 +22,15 @@
 }
 
 .neuBtn2 {
-  background: #ff7b00 !important;
-  background: -moz-linear-gradient(
-    315deg,
-    rgba(255, 123, 0, 1) 0%,
-    #fea562 100%
-  ) !important;
+  background: #cd201f !important;
+  background: -moz-linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
   background: -webkit-linear-gradient(
     315deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(254, 165, 98, 1) 100%
+    #cd201f 0%,
+    #f04747 100%
   ) !important;
-  background: linear-gradient(
-    315deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(254, 165, 98, 1) 100%
-  ) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7b00",endColorstr="#fea562",GradientType=1);
+  background: linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cd201f",endColorstr="#f04747",GradientType=1);
   color: #e6e6f0 !important;
 }
 

@@ -89,7 +89,7 @@ const CalculadoraCO2 = ({ room }) => {
     <>
       <Container>
         <Heading
-          bgGradient="linear(to-l, #fea562, #ff7b00)"
+          bgGradient="linear(to-l, #f04747, #cd201f)"
           bgClip="text"
           fontFamily="SF-bold"
           fontSize="3xl"
@@ -97,7 +97,7 @@ const CalculadoraCO2 = ({ room }) => {
         >
           Calculadora de niveles{" "}
           <Badge
-            bgGradient="linear(to-l, #fea562, #ff7b00)"
+            bgGradient="linear(to-l, #f04747, #cd201f)"
             color="#e6e6f0"
             fontSize="1.2rem"
             className="mb-1"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CalculadoraCADR from "../components/calculadora/CalculadoraCADR";
-import CalculadoraCO2 from "../components/calculadora/CalculadoraCO2";
+import CalculadoraCADR from "../components/Calculadora/CalculadoraCADR";
+import CalculadoraCO2 from "../components/Calculadora/CalculadoraCO2";
 import { Image, Box, Container } from "@chakra-ui/react";
 
 const MainPage = () => {
