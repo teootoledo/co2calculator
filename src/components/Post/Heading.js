@@ -1,19 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { Heading } from "@chakra-ui/react";
 
-class Titulo extends Component {
-  render() {
+const Titulo = (post) => {
+  const isHeadingON = post.title !== "" && post.subtitle !== "" ? true : false;
+  if (isHeadingON) {
     return (
       <>
         <Heading as="h2" size="xs" fontFamily="SF-bold">
-          TRAZABILIDAD Y ALERTAS
+          {post.subtitle}
         </Heading>
         <Heading as="h1" size="xl" className="mb-3" fontFamily="SF-bold">
-          MEDIDORES DE CO<sub>2</sub>
+          {post.title}
         </Heading>
       </>
     );
+  } else {
+    return <></>;
   }
-}
+};
 
 export default Titulo;
