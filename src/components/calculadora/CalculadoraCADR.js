@@ -28,8 +28,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
 
   const calcular = (e) => {
     setIsLoading(true);
-    const { alto, ancho, largo, ventilacion, cambiosAire } = room;
+    const { alto, ancho, largo, cambiosAire } = room;
     const volumenCalc = parseInt(alto * ancho * largo);
+    const ventilacion = 1.5;
     const deltaAire = cambiosAire - ventilacion;
     const result = parseInt(volumenCalc * deltaAire);
     setRoom({
@@ -37,6 +38,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
       ["cadr"]: result,
       ["volumen"]: volumenCalc,
       ["cambiosFiltro"]: deltaAire,
+      ["ventilacion"]: ventilacion,
     });
     setIsLoading(false);
   };
@@ -51,7 +53,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
           fontSize="3xl"
           className="mb-3"
         >
-          Calculadora de filtro{" "}
+          Calculadora de purificadores con Filtro{" "}
           <Badge
             bgGradient="linear(to-l, #f85dad, #df3a8e)"
             color="#e6e6f0"
@@ -59,7 +61,8 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             className="mb-1"
           >
             HEPA
-          </Badge>
+          </Badge>{" "}
+          H13 o superior
         </Heading>
         <Text
           color="gray.500"
@@ -67,15 +70,18 @@ const CalculadoraCADR = ({ room, setRoom }) => {
           fontSize="lg"
           className="mb-3"
         >
-          Ingrese las características del aula:
+          Introduzca las dimensiones del aula largo, ancho y la altura en metros
+          desde el suelo al techo, junto con el número de cambios de aire que
+          desea.
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
             <Input
               type="number"
               name="alto"
-              placeholder="Altura"
+              placeholder="Altura (en metros)"
               className="neuInput"
+              isRequired="true"
               onChange={() =>
                 setRoom({ ...room, ["alto"]: inputRef.current[0].value })
               }
@@ -85,8 +91,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             <Input
               type="number"
               name="ancho"
-              placeholder="Ancho"
+              placeholder="Ancho (en metros)"
               size="md"
+              isRequired="true"
               className="neuInput"
               ref={(el) => (inputRef.current[1] = el)}
               onChange={() =>
@@ -96,8 +103,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             <Input
               type="number"
               name="largo"
-              placeholder="Largo"
+              placeholder="Largo (en metros)"
               className="neuInput"
+              isRequired="true"
               size="md"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
@@ -107,8 +115,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             <Input
               type="number"
               name="cambiosAire"
-              placeholder="Cambios de aire"
+              placeholder="Cambios de aire *"
               className="neuInput"
+              isRequired="true"
               size="md"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
@@ -118,13 +127,21 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             <Text
               color="gray.500"
               fontFamily="SF-regular"
+              fontSize="md"
+              className="mb-3"
+            >
+              * La recomendación de Harvard es 5 (mejor dejarlo en 5).
+            </Text>
+            {/*             <Text
+              color="gray.500"
+              fontFamily="SF-regular"
               fontSize="lg"
               className="mt-5"
             >
               Situación de ventilación del aula:
-            </Text>
+              </Text>
             <Select
-              ref={(el) => (inputRef.current[4] = el)}
+            ref={(el) => (inputRef.current[4] = el)}
               placeholder="Seleciona una opcion"
               className="neuInput"
               value={room.ventilacion}
@@ -134,10 +151,12 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             >
               <option value="0.5">Mala ventilación</option>
               <option value="1">Ventilación baja</option>
-              <option value="1.5">Normal de colegio</option>
+              <option selected="selected" value="1.5">
+                Normal de colegio
+                </option>
               <option value="3">Buena ventilación</option>
               <option value="4">Ventilación mejorada con algún sistema</option>
-            </Select>
+            </Select> */}
             <Text
               color="gray.500"
               fontFamily="SF-regular"
@@ -160,6 +179,15 @@ const CalculadoraCADR = ({ room, setRoom }) => {
                   <p>{room.cadr} Cadr [m³/h]</p>
                 </Tooltip>
               </div>
+              <Text
+                color="gray.500"
+                fontFamily="SF-regular"
+                fontSize="sm"
+                className="my-2 mx-3"
+              >
+                Clean Air Delivery Rate (Tasas de entrega de aire limpio). Los
+                purificadores (individual o varios, deben sumar esto).
+              </Text>
             </div>
           </Stack>
         </form>
