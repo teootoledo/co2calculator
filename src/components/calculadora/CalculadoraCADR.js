@@ -127,8 +127,8 @@ const CalculadoraCADR = ({ room, setRoom }) => {
             <Text
               color="gray.500"
               fontFamily="SF-regular"
-              fontSize="md"
-              className="mb-3"
+              fontSize="sm"
+              className="mt-2"
             >
               * La recomendación de Harvard es 5 (mejor dejarlo en 5).
             </Text>
