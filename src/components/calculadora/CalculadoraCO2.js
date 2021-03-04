@@ -109,9 +109,10 @@ const CalculadoraCO2 = ({ room }) => {
           color="gray.500"
           fontFamily="SF-regular"
           fontSize="lg"
-          className="mb-3"
+          className="mt-4 mb-3"
         >
-          Tasa de generación de CO<sub>2</sub>:
+          Límite CO2 que no puede superar el medidor (en el aula dimensionada en
+          la calculadora de purificadores).
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
@@ -189,7 +190,7 @@ const CalculadoraCO2 = ({ room }) => {
             <Input
               type="number"
               name="calibracionCO2ext"
-              placeholder="[ppm]"
+              placeholder="[ppm]**"
               className="neuInput"
               size="md"
               ref={(el) => (inputRef.current[2] = el)}
@@ -203,10 +204,11 @@ const CalculadoraCO2 = ({ room }) => {
             <Text
               color="gray.500"
               fontFamily="SF-regular"
-              fontSize="lg"
-              className="mt-5"
+              fontSize="sm"
+              className="mt-2 mb-3"
             >
-              Cálculo del límite de CO<sub>2</sub>
+              420 ppm es lo usual en exterior, pero se recomienda ingresar el
+              valor medido en el establecimiento.
             </Text>
             <Button
               onClick={() => calcular()}
@@ -222,10 +224,11 @@ const CalculadoraCO2 = ({ room }) => {
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
-                    fontSize="md"
-                    className="mt-0"
+                    fontSize="sm"
+                    className="mx-3 mb-2"
                   >
-                    Sin filtro HEPA
+                    Límite CO2 que no puede superar el medidor si NO usa filtro
+                    HEPA* (ppm):
                   </Text>
                   <div className={`${!aula.limiteNoHEPA && "invisible"} `}>
                     <Tooltip
@@ -237,15 +240,16 @@ const CalculadoraCO2 = ({ room }) => {
                   </div>
                 </div>
               </Box>
-              <Box height="80px">
+              <Box height="80px" className="mb-5">
                 <div className="neuBtn py-3">
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
-                    fontSize="md"
-                    className="mt-0"
+                    fontSize="sm"
+                    className="mx-3 mb-2"
                   >
-                    Con filtro HEPA
+                    Límite CO2 que no puede superar el medidor si usa filtro
+                    HEPA* (ppm):
                   </Text>
                   <div className={`${!aula.limiteSiHEPA && "invisible"} `}>
                     <Tooltip
@@ -259,6 +263,15 @@ const CalculadoraCO2 = ({ room }) => {
               </Box>
             </SimpleGrid>
           </Stack>
+          <Text
+            color="gray.500"
+            fontFamily="SF-regular"
+            fontSize="sm"
+            className="my-2 mx-3"
+          >
+            No es deseable que los ppm** superen la tasa de arriba en ningún
+            caso. ** Partes por millón
+          </Text>
         </form>
       </Container>
     </>
