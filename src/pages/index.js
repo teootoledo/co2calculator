@@ -3,7 +3,6 @@ import CalculadoraCADR from "../components/calculadora/CalculadoraCADR";
 import CalculadoraCO2 from "../components/calculadora/CalculadoraCO2";
 import Post from "../components/Post/Post";
 import { PostsList } from "../components/Post/PostsList";
-import { Image } from "@chakra-ui/react";
 
 const MainPage = () => {
   const [room, setRoom] = useState({
@@ -32,7 +31,7 @@ const MainPage = () => {
       <div className="container">
         <Post post={encabezado} />
         <div className="row">
-          <div className="col-md-6 col-12">
+          <div className="col-md-6 col-12" id="calculadora">
             <div className="card">
               <CalculadoraCADR room={room} setRoom={setRoom} />
             </div>
@@ -43,7 +42,7 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-        <Post post={infoPosterior} />
+        <Post post={infoPosterior} id="informacion" />
         <Post post={infoResaltada} />
         <Post post={infoPosterior2} />
         <Post post={imagenGrafico} />
