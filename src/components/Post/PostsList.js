@@ -1,13 +1,13 @@
 export const PostsList = [
   {
-    subtitle: "INFORMACIÓN",
+    subtitle: "CALCULADORA",
     title: "¿POR QUÉ ES IMPORTANTE MEDIR LOS NIVELES DE CO2?",
     image: "#",
     cName: "post",
     contentFontF: "SF-light",
     contentColor: "#6b6b6b",
     content:
-      "CO2 es parámetro del aire exhalado e indicador validado para medir riesgos de contagio. El control de la calidad del aire en interiores es un elemento clave para combatir la pandemia.",
+      "El CO2 es parámetro del aire exhalado e indicador validado para medir riesgos de contagio. El control de la calidad del aire en interiores es un elemento clave para combatir la pandemia.",
   },
   {
     subtitle: "INFORMACIÓN",
