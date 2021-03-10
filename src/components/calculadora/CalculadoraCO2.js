@@ -193,6 +193,7 @@ const CalculadoraCO2 = ({ room }) => {
               placeholder="[ppm]**"
               className="neuInput"
               size="md"
+              defaultValue="420"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
                 setAula({
@@ -208,7 +209,7 @@ const CalculadoraCO2 = ({ room }) => {
               className="mt-2 mb-3"
             >
               420 ppm es lo usual en exterior, pero se recomienda ingresar el
-              valor medido en el establecimiento.
+              valor medido en el establecimiento. **ppm
             </Text>
             <Button
               onClick={() => calcular()}
