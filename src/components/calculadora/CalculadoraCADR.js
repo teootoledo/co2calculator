@@ -112,6 +112,14 @@ const CalculadoraCADR = ({ room, setRoom }) => {
                 setRoom({ ...room, ["largo"]: inputRef.current[2].value })
               }
             />
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5 mb-0 mx-3"
+            >
+              Cambios de aire:
+            </Text>
             <Input
               type="number"
               name="cambiosAire"
