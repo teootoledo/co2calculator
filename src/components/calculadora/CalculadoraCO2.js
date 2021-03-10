@@ -217,7 +217,7 @@ const CalculadoraCO2 = ({ room }) => {
               loadingText="Calculando..."
               className="neuBtn2 neuBackground"
             >
-              Calcular
+              Calcular límite seguro
             </Button>
             <SimpleGrid columns={2} spacing={4} className="mb-4">
               <Box height="80px">
