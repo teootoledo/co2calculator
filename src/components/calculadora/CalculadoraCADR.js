@@ -180,7 +180,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               loadingText="Calculando..."
               className="neuBtn2 neuBackground"
             >
-              Calcular tamaño del filtro
+              Calcular purificador necesario
             </Button>
             <div className="neuBtn py-3">
               <div className={`${!room.cadr && "invisible"} `}>
