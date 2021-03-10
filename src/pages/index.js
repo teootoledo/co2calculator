@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CalculadoraCADR from "../components/calculadora/CalculadoraCADR";
-import CalculadoraCO2 from "../components/calculadora/CalculadoraCO2";
+import CalculadoraCADR from "../components/Calculadora/CalculadoraCADR";
+import CalculadoraCO2 from "../components/Calculadora/CalculadoraCO2";
 import Post from "../components/Post/Post";
 import { PostsList } from "../components/Post/PostsList";
 
@@ -10,7 +10,7 @@ const MainPage = () => {
     ancho: null,
     largo: null,
     cadr: null,
-    cambiosAire: null,
+    cambiosAire: 5,
     cambiosFiltro: null,
     ventilacion: null,
     volumen: null,

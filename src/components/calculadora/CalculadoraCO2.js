@@ -30,7 +30,7 @@ const CalculadoraCO2 = ({ room }) => {
     profesores: null,
     flujoTotalPersonaLS: null,
     flujoTotalPersonaM3H: null,
-    calibracionCO2ext: null,
+    calibracionCO2ext: 420,
     limiteNoHEPA: null,
     limiteSiHEPA: null,
   });
@@ -233,7 +233,7 @@ const CalculadoraCO2 = ({ room }) => {
                   </Text>
                   <div className={`${!aula.limiteNoHEPA && "invisible"} `}>
                     <Tooltip
-                      label="Flujo de aire exterior"
+                      label="Limite CO2 sin filtro HEPA"
                       aria-label="litrosCO2pm"
                     >
                       <p>{aula.limiteNoHEPA} [ppm]</p>
@@ -254,7 +254,7 @@ const CalculadoraCO2 = ({ room }) => {
                   </Text>
                   <div className={`${!aula.limiteSiHEPA && "invisible"} `}>
                     <Tooltip
-                      label="Flujo de aire exterior"
+                      label="Limite CO2 con filtro HEPA"
                       aria-label="litrosCO2pm"
                     >
                       <p>{aula.limiteSiHEPA} [ppm]</p>
@@ -270,8 +270,8 @@ const CalculadoraCO2 = ({ room }) => {
             fontSize="sm"
             className="my-2 mx-3"
           >
-            No es deseable que los ppm** superen la tasa de arriba en ningún
-            caso. ** Partes por millón
+            No se debería superar estas tasas para minimizar los riesgos. **
+            Partes por millón
           </Text>
         </form>
       </Container>
