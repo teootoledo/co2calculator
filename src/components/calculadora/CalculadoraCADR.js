@@ -70,9 +70,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
           fontSize="lg"
           className="mb-3"
         >
-          Introduzca las dimensiones del aula largo, ancho y la altura en metros
-          desde el suelo al techo, junto con el número de cambios de aire que
-          desea.
+          Introduzca las dimensiones del ambiente. Largo, ancho y la altura en
+          metros desde el suelo al techo, junto con el número de cambios de aire
+          que desea.
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>

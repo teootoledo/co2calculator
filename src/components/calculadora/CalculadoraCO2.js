@@ -111,8 +111,8 @@ const CalculadoraCO2 = ({ room }) => {
           fontSize="lg"
           className="mt-4 mb-3"
         >
-          Límite CO2 que no puede superar el medidor (en el aula dimensionada en
-          la calculadora de purificadores).
+          Límite CO2 que no puede superar el medidor (en el ambiente
+          dimensionado en la calculadora de purificadores).
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
