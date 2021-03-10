@@ -119,6 +119,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               className="neuInput"
               isRequired="true"
               size="md"
+              defaultValue="5"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
                 setRoom({ ...room, ["cambiosAire"]: inputRef.current[3].value })
@@ -130,7 +131,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               fontSize="sm"
               className="mt-2"
             >
-              * La recomendación de Harvard es 5 (mejor dejarlo en 5).
+              * El valor recomendado es 5 (Universidad de Harvard).
             </Text>
             {/*             <Text
               color="gray.500"
