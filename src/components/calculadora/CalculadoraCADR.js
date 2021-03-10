@@ -180,7 +180,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               loadingText="Calculando..."
               className="neuBtn2 neuBackground"
             >
-              Calcular
+              Calcular tamaño del filtro
             </Button>
             <div className="neuBtn py-3">
               <div className={`${!room.cadr && "invisible"} `}>
@@ -194,8 +194,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
                 fontSize="sm"
                 className="my-2 mx-3"
               >
-                Clean Air Delivery Rate (Tasas de entrega de aire limpio). Los
-                purificadores (individual o varios, deben sumar esto).
+                Clean Air Delivery Rate (Tasas de entrega de aire limpio). Se
+                deben instalar los purificadores necesarios para llegar a este
+                cálculo.
               </Text>
             </div>
           </Stack>
