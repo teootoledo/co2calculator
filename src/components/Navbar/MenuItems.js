@@ -1,17 +1,12 @@
 export const MenuItems = [
   {
     title: "Calculadora",
-    url: "#",
+    url: "calculadora",
     cName: "nav-links",
   },
   {
     title: "Información",
-    url: "#",
-    cName: "nav-links",
-  },
-  {
-    title: "Contacto",
-    url: "https://adox.com.ar/contacto/",
+    url: "informacion",
     cName: "nav-links",
   },
 ];

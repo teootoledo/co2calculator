@@ -3,6 +3,8 @@ import CalculadoraCADR from "../components/calculadora/CalculadoraCADR";
 import CalculadoraCO2 from "../components/calculadora/CalculadoraCO2";
 import Post from "../components/Post/Post";
 import { PostsList } from "../components/Post/PostsList";
+import { Button } from "@chakra-ui/react";
+import { Link } from "react-scroll";
 
 const MainPage = () => {
   const [room, setRoom] = useState({
@@ -28,29 +30,40 @@ const MainPage = () => {
 
   return (
     <>
-      <div className="container">
-        <Post post={encabezado} />
-        <div className="row">
-          <div className="col-md-6 col-12" id="calculadora">
-            <div className="card">
-              <CalculadoraCADR room={room} setRoom={setRoom} />
+      <section id="inicio">
+        <div className="container">
+          <section id="calculadora">
+            <Post post={encabezado} />
+            <div className="row">
+              <div className="col-md-6 col-12" id="calculadora">
+                <div className="card">
+                  <CalculadoraCADR room={room} setRoom={setRoom} />
+                </div>
+              </div>
+              <div className="col-md-6 col-12">
+                <div className="card">
+                  <CalculadoraCO2 room={room} />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="col-md-6 col-12">
-            <div className="card">
-              <CalculadoraCO2 room={room} />
-            </div>
-          </div>
+          </section>
+          <section id="informacion">
+            <Post post={infoPosterior} id="informacion" />
+            <Post post={infoResaltada} />
+            <Post post={infoPosterior2} />
+            <Post post={imagenGrafico} />
+            <Post post={infoPosterior3} />
+            <Post post={imagenAula} />
+            <Post post={infoPosterior4} />
+            <Post post={fichaTecnica} />
+            <Button className="neuBtn2 neuBackground mb-5">
+              <Link to="inicio" smooth={true} duration={500} offset={-110}>
+                Volver al inicio
+              </Link>
+            </Button>
+          </section>
         </div>
-        <Post post={infoPosterior} id="informacion" />
-        <Post post={infoResaltada} />
-        <Post post={infoPosterior2} />
-        <Post post={imagenGrafico} />
-        <Post post={infoPosterior3} />
-        <Post post={imagenAula} />
-        <Post post={infoPosterior4} />
-        <Post post={fichaTecnica} />
-      </div>
+      </section>
     </>
   );
 };

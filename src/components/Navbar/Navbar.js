@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { MenuItems } from "./MenuItems";
+import { Link } from "react-scroll";
 import "./Navbar.css";
 import AdoxLogo from "./adox-logo.svg";
 
@@ -27,12 +28,23 @@ class Navbar extends Component {
           {MenuItems.map((item, index) => {
             return (
               <li key={index}>
-                <a className={item.cName} href={item.url}>
+                <Link
+                  className={item.cName}
+                  to={item.url}
+                  smooth={true}
+                  duration={500}
+                  offset={-40}
+                >
                   {item.title}
-                </a>
+                </Link>
               </li>
             );
           })}
+          <li>
+            <a className="nav-links" href="https://adox.com.ar/contacto/">
+              Contacto
+            </a>
+          </li>
         </ul>
       </nav>
     );
