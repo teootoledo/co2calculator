@@ -70,9 +70,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
           fontSize="lg"
           className="mb-3"
         >
-          Introduzca las dimensiones del aula largo, ancho y la altura en metros
-          desde el suelo al techo, junto con el número de cambios de aire que
-          desea.
+          Introduzca las dimensiones del ambiente. Largo, ancho y la altura en
+          metros desde el suelo al techo, junto con el número de cambios de aire
+          que desea.
         </Text>
         <form action="">
           <Stack spacing={6} w={["100%"]}>
@@ -112,6 +112,14 @@ const CalculadoraCADR = ({ room, setRoom }) => {
                 setRoom({ ...room, ["largo"]: inputRef.current[2].value })
               }
             />
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="lg"
+              className="mt-5 mb-0 mx-3"
+            >
+              Cambios de aire:
+            </Text>
             <Input
               type="number"
               name="cambiosAire"
@@ -119,6 +127,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               className="neuInput"
               isRequired="true"
               size="md"
+              defaultValue="5"
               ref={(el) => (inputRef.current[3] = el)}
               onChange={() =>
                 setRoom({ ...room, ["cambiosAire"]: inputRef.current[3].value })
@@ -130,7 +139,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               fontSize="sm"
               className="mt-2"
             >
-              * La recomendación de Harvard es 5 (mejor dejarlo en 5).
+              * El valor recomendado es 5 (Universidad de Harvard).
             </Text>
             {/*             <Text
               color="gray.500"
@@ -171,7 +180,7 @@ const CalculadoraCADR = ({ room, setRoom }) => {
               loadingText="Calculando..."
               className="neuBtn2 neuBackground"
             >
-              Calcular
+              Calcular purificador necesario
             </Button>
             <div className="neuBtn py-3">
               <div className={`${!room.cadr && "invisible"} `}>
@@ -185,8 +194,9 @@ const CalculadoraCADR = ({ room, setRoom }) => {
                 fontSize="sm"
                 className="my-2 mx-3"
               >
-                Clean Air Delivery Rate (Tasas de entrega de aire limpio). Los
-                purificadores (individual o varios, deben sumar esto).
+                Clean Air Delivery Rate (Tasas de entrega de aire limpio). Se
+                deben instalar los purificadores necesarios para llegar a este
+                cálculo.
               </Text>
             </div>
           </Stack>

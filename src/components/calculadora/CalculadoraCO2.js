@@ -30,7 +30,7 @@ const CalculadoraCO2 = ({ room }) => {
     profesores: null,
     flujoTotalPersonaLS: null,
     flujoTotalPersonaM3H: null,
-    calibracionCO2ext: null,
+    calibracionCO2ext: 420,
     limiteNoHEPA: null,
     limiteSiHEPA: null,
   });
@@ -111,11 +111,11 @@ const CalculadoraCO2 = ({ room }) => {
           fontSize="lg"
           className="mt-4 mb-3"
         >
-          Límite CO2 que no puede superar el medidor (en el aula dimensionada en
-          la calculadora de purificadores).
+          Límite CO2 que no puede superar el medidor (en el ambiente
+          dimensionado en la calculadora de purificadores).
         </Text>
         <form action="">
-          <Stack spacing={6} w={["100%"]}>
+          <Stack spacing={6} w={["100%"]} className="mb-3">
             <Input
               type="number"
               name="estudiantes"
@@ -193,6 +193,7 @@ const CalculadoraCO2 = ({ room }) => {
               placeholder="[ppm]**"
               className="neuInput"
               size="md"
+              defaultValue="420"
               ref={(el) => (inputRef.current[2] = el)}
               onChange={() =>
                 setAula({
@@ -208,7 +209,7 @@ const CalculadoraCO2 = ({ room }) => {
               className="mt-2 mb-3"
             >
               420 ppm es lo usual en exterior, pero se recomienda ingresar el
-              valor medido en el establecimiento.
+              valor medido en el establecimiento. **ppm
             </Text>
             <Button
               onClick={() => calcular()}
@@ -216,23 +217,23 @@ const CalculadoraCO2 = ({ room }) => {
               loadingText="Calculando..."
               className="neuBtn2 neuBackground"
             >
-              Calcular
+              Calcular límite seguro
             </Button>
-            <SimpleGrid columns={2} spacing={4} className="mb-4">
-              <Box height="80px">
+            <SimpleGrid columns={2} spacing={4} className="mb-1">
+              <Box>
                 <div className="neuBtn py-3">
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
                     fontSize="sm"
-                    className="mx-3 mb-2"
+                    className="mx-3"
                   >
                     Límite CO2 que no puede superar el medidor si NO usa filtro
                     HEPA* (ppm):
                   </Text>
                   <div className={`${!aula.limiteNoHEPA && "invisible"} `}>
                     <Tooltip
-                      label="Flujo de aire exterior"
+                      label="Limite CO2 sin filtro HEPA"
                       aria-label="litrosCO2pm"
                     >
                       <p>{aula.limiteNoHEPA} [ppm]</p>
@@ -240,20 +241,20 @@ const CalculadoraCO2 = ({ room }) => {
                   </div>
                 </div>
               </Box>
-              <Box height="80px" className="mb-5">
+              <Box className="mb-5">
                 <div className="neuBtn py-3">
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
                     fontSize="sm"
-                    className="mx-3 mb-2"
+                    className="mx-3"
                   >
                     Límite CO2 que no puede superar el medidor si usa filtro
                     HEPA* (ppm):
                   </Text>
                   <div className={`${!aula.limiteSiHEPA && "invisible"} `}>
                     <Tooltip
-                      label="Flujo de aire exterior"
+                      label="Limite CO2 con filtro HEPA"
                       aria-label="litrosCO2pm"
                     >
                       <p>{aula.limiteSiHEPA} [ppm]</p>
@@ -263,15 +264,17 @@ const CalculadoraCO2 = ({ room }) => {
               </Box>
             </SimpleGrid>
           </Stack>
-          <Text
-            color="gray.500"
-            fontFamily="SF-regular"
-            fontSize="sm"
-            className="my-2 mx-3"
-          >
-            No es deseable que los ppm** superen la tasa de arriba en ningún
-            caso. ** Partes por millón
-          </Text>
+          <div>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="sm"
+              className="mt-0 mx-3"
+            >
+              No se debería superar estas tasas para minimizar los riesgos. **
+              Partes por millón
+            </Text>
+          </div>
         </form>
       </Container>
     </>
