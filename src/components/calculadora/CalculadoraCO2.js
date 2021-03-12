@@ -115,7 +115,7 @@ const CalculadoraCO2 = ({ room }) => {
           dimensionado en la calculadora de purificadores).
         </Text>
         <form action="">
-          <Stack spacing={6} w={["100%"]}>
+          <Stack spacing={6} w={["100%"]} className="mb-3">
             <Input
               type="number"
               name="estudiantes"
@@ -219,14 +219,14 @@ const CalculadoraCO2 = ({ room }) => {
             >
               Calcular límite seguro
             </Button>
-            <SimpleGrid columns={2} spacing={4} className="mb-4">
-              <Box height="80px">
+            <SimpleGrid columns={2} spacing={4} className="mb-1">
+              <Box>
                 <div className="neuBtn py-3">
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
                     fontSize="sm"
-                    className="mx-3 mb-2"
+                    className="mx-3"
                   >
                     Límite CO2 que no puede superar el medidor si NO usa filtro
                     HEPA* (ppm):
@@ -241,13 +241,13 @@ const CalculadoraCO2 = ({ room }) => {
                   </div>
                 </div>
               </Box>
-              <Box height="80px" className="mb-5">
+              <Box className="mb-5">
                 <div className="neuBtn py-3">
                   <Text
                     color="gray.500"
                     fontFamily="SF-regular"
                     fontSize="sm"
-                    className="mx-3 mb-2"
+                    className="mx-3"
                   >
                     Límite CO2 que no puede superar el medidor si usa filtro
                     HEPA* (ppm):
@@ -264,15 +264,17 @@ const CalculadoraCO2 = ({ room }) => {
               </Box>
             </SimpleGrid>
           </Stack>
-          <Text
-            color="gray.500"
-            fontFamily="SF-regular"
-            fontSize="sm"
-            className="my-2 mx-3"
-          >
-            No se debería superar estas tasas para minimizar los riesgos. **
-            Partes por millón
-          </Text>
+          <div>
+            <Text
+              color="gray.500"
+              fontFamily="SF-regular"
+              fontSize="sm"
+              className="mt-0 mx-3"
+            >
+              No se debería superar estas tasas para minimizar los riesgos. **
+              Partes por millón
+            </Text>
+          </div>
         </form>
       </Container>
     </>

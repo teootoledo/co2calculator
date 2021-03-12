@@ -32,7 +32,7 @@ class Navbar extends Component {
                   className={item.cName}
                   to={item.url}
                   smooth={true}
-                  duration={500}
+                  duration={1000}
                   offset={-40}
                 >
                   {item.title}

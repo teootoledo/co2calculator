@@ -3,13 +3,13 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
     -5px -5px 15px rgba(255, 255, 255, 0.9) !important;
   border: none;
-  border-radius: 10px !important;
-  height: 80px;
+  border-radius: 0px 0px 10px 10px !important;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 15px;
   margin-left: 15px;
   margin-right: 15px;
@@ -22,7 +22,7 @@
 }
 
 .logo {
-  height: 40px;
+  height: 25px;
   color: #cd201f !important;
   color: -moz-linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
   color: -webkit-linear-gradient(315deg, #cd201f 0%, #f04747 100%) !important;
@@ -33,7 +33,7 @@
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  grid-gap: 50px;
+  grid-gap: 20px;
   list-style: none;
   text-align: center;
   width: 70vw;
@@ -43,7 +43,9 @@
 
 .nav-links {
   text-decoration: none;
+  font-size: 1.125rem;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .nav-links:hover {
@@ -64,9 +66,9 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 420px;
+    height: 345px;
     position: absolute;
-    top: 110px;
+    top: 80px;
     left: -100%;
     transition: all 0.5s ease;
   }
@@ -100,7 +102,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(15%, 50%);
+    transform: translate(20%, 70%);
   }
 
   .menu-icon {
@@ -108,7 +110,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 50%);
+    transform: translate(-80%, 20%);
     font-size: 1.8rem;
     cursor: progress;
   }
