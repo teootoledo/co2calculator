@@ -1,20 +1,13 @@
-# pull official base image
-FROM node:13.12.0-alpine
-
-# set working directory
+#STEP 1 - BUILD OF REACT APP PROJECT
+FROM node:12-alpine AS build
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
 COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install
+COPY . .
+RUN npm run build
 
-# add app
-COPY . ./
-
-# start app
-CMD ["npm", "start"]
+#STEP 2 - CREATE NGINX SERVER
+FROM nginx:1.19.8-alpine AS prod-stage
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 81
+CMD [ "nginx", "-g", "daemon off;" ]
