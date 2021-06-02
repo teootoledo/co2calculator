@@ -80,7 +80,8 @@ export const PostsList = [
   {
     subtitle: "FICHA TÉCNICA",
     title: "MEDIDOR DE CO2 - ADOX",
-    image: "https://i.ibb.co/1zc5QwM/ficha-tecnica.jpg",
+    image:
+      "https://i.ibb.co/0sYk8yP/Captura-de-Pantalla-2021-06-02-a-la-s-10-54-50.png",
     cName: "post",
     contentFontF: "SF-light",
     contentColor: "#6b6b6b",

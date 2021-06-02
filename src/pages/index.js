@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CalculadoraCADR from "../components/calculadora/CalculadoraCADR";
 import CalculadoraCO2 from "../components/calculadora/CalculadoraCO2";
 import Post from "../components/Post/Post";
